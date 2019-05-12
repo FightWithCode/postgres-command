@@ -1,0 +1,8 @@
+Restore: 
+pg_restore -U postgres -h localhost -d test_db < data.dump --no-privileges --no-owner
+
+Running PSQL:
+psql -U postgres -h localhost
+
+Backup: 
+pg_dump --host=localhost --username=postgres --format=c --file=pgbackup`date +%F-%H%M`.dump FancyChampsDB
