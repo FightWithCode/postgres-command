@@ -5,4 +5,4 @@ Running PSQL:
 psql -U postgres -h localhost
 
 Backup: 
-pg_dump --host=localhost --username=postgres --format=c --file=pgbackup`date +%F-%H%M`.dump FancyChampsDB
+pg_dump --host=localhost --port=PORT --username=postgres --format=c --file=pgbackup`date +%F-%H%M`.dump dbname
