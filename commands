@@ -1,8 +1,14 @@
-Restore: 
-pg_restore -U postgres -h localhost -d test_db < data.dump --no-privileges --no-owner
-
 Running PSQL:
 psql -U postgres -h localhost
 
 Backup: 
 pg_dump --host=localhost --port=PORT --username=postgres --format=c --file=pgbackup`date +%F-%H%M`.dump dbname
+Restore: 
+pg_restore -U postgres -h localhost -d test_db < data.dump --no-privileges --no-owner
+
+
+Backup with exclude parameter:
+pg_dump --host=localhost --port=5432 --username=postgres --format=c --file=pgbackupdate +%F-%H%M.dump inf_db_p --exclude-table="public.tb_name"
+
+Restore with exclude parameter
+pg_restore -L <(pg_restore -l data.dump | grep -v 'TABLE DATA public tb_names ') -U docker -h localhost-d dbname < data.dump --no-privileges --no-owner
